@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXTextArea?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.StackPane?>
+<?import org.kordamp.ikonli.javafx.FontIcon?>
+
+<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1100.0" styleClass="stackPane" stylesheets="@../styles/Dashstyle.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.MainStageController">
+   <children>
+      <AnchorPane prefHeight="200.0" prefWidth="200.0">
+         <children>
+            <AnchorPane fx:id="mainStage" prefHeight="701.0" prefWidth="1101.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <children>
+                  <Label layoutX="300.0" prefHeight="124.0" prefWidth="556.0" styleClass="label_title" stylesheets="@../styles/Dashstyle.css" text="Arboretum Game" />
+                  <Button fx:id="btnPlay" layoutX="500.0" layoutY="300.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="150.0" styleClass="buttons" stylesheets="@../styles/Dashstyle.css" text="Jugar" />
+                  <Button fx:id="btnRules" layoutX="500.0" layoutY="400.0" mnemonicParsing="false" onAction="#changeStage" prefHeight="30.0" prefWidth="150.0" styleClass="buttons" stylesheets="@../styles/Dashstyle.css" text="Reglas" />
+                  <Button fx:id="btnAbout" layoutX="500.0" layoutY="500.0" mnemonicParsing="false" onAction="#changeStage" prefHeight="30.0" prefWidth="150.0" styleClass="buttons" stylesheets="@../styles/Dashstyle.css" text="Acerca De" />
+                  <Button fx:id="btnClose" layoutX="1069.0" layoutY="1.0" mnemonicParsing="false" onMouseClicked="#Close" prefHeight="25.0" prefWidth="30.0" styleClass="btnClose" stylesheets="@../styles/Dashstyle.css">
+                     <graphic>
+                        <FontIcon iconColor="WHITE" iconLiteral="fa-close" iconSize="18" text="" />
+                     </graphic>
+                  </Button>
+                  <Button fx:id="btnMinimize" layoutX="1030.0" layoutY="1.0" mnemonicParsing="false" onMouseClicked="#Minimize" prefHeight="25.0" prefWidth="30.0" styleClass="btnMinimize" stylesheets="@../styles/Dashstyle.css">
+                     <graphic>
+                        <FontIcon iconColor="WHITE" iconLiteral="fa-window-minimize" iconSize="18" />
+                     </graphic>
+                  </Button>
+               </children>
+            </AnchorPane>
+            <AnchorPane fx:id="rulesStage" prefHeight="701.0" prefWidth="1101.0" styleClass="pane" stylesheets="@../styles/Dashstyle.css" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <children>
+                  <Label layoutX="280.0" prefHeight="124.0" prefWidth="584.0" styleClass="label_title" stylesheets="@../styles/Dashstyle.css" text="Arboretum Reglas" />
+                  <JFXTextArea editable="false" layoutX="80.0" layoutY="150.0" prefHeight="551.0" prefWidth="952.0" styleClass="textArea" stylesheets="@../styles/Dashstyle.css" text="¿Cómo se juega? &#10;En una partida de Arboretum, se consta con un número indeterminado de turnos, esto es hasta que se&#10;agote el mazo central de cartas.&#10;&#10;El turno de un jugador consta de los siguientes pasos:&#10;&#10;1- Robar 2 cartas: Se debe tomar 2 cartas, una después de la otra, Estas cartas se pueden robar del&#10;mazo central o de cualquiera de las pilas de descartes de los jugadores, incluida la propia. &#10;Estas 2 cartas se pueden tomar del mismo o diferentes mazos.&#10;&#10;2- Jugar una carta en el arboreto: Si el arboreto del jugador está vacío, la primera carta la coloca el&#10;jugador en su zona de juego boca arriba, pero si ya hay cartas en el arboreto, las siguientes cartas&#10;deberán ser colocadas adyacentes ortogonalmente a alguna carta ya jugada.&#10;&#10;3- Descartar una carta en la pila de descarte: El jugador deberá elegir una de las 8 cartas que tiene&#10;en su mano en este momento y colocarla boca arriba en su pila de descarte. Esto para que queden&#10;exactamente 7 cartas en la mano del jugador.&#10;Al cumplirse estas 3 acciones (en esa secuencia), finaliza el turno del jugador y el turno pasa al jugador&#10;de la izquierda, esto en caso de haber más de 2 jugadores." wrapText="true" />
+                  <Button fx:id="btnMinimize1" layoutX="1030.0" layoutY="1.0" mnemonicParsing="false" onMouseClicked="#Minimize" prefHeight="25.0" prefWidth="30.0" styleClass="btnMinimize" stylesheets="@../styles/Dashstyle.css">
+                     <graphic>
+                        <FontIcon iconColor="WHITE" iconLiteral="fa-window-minimize" iconSize="18" />
+                     </graphic>
+                  </Button>
+                  <Button fx:id="btnClose1" layoutX="1070.0" layoutY="1.0" mnemonicParsing="false" onMouseClicked="#Close" prefHeight="25.0" prefWidth="30.0" styleClass="btnClose" stylesheets="@../styles/Dashstyle.css">
+                     <graphic>
+                        <FontIcon iconColor="WHITE" iconLiteral="fa-close" iconSize="18" text="" />
+                     </graphic>
+                  </Button>
+                  <Button fx:id="btnBack" mnemonicParsing="false" onAction="#backStage" prefHeight="25.0" prefWidth="35.0" styleClass="backButton" stylesheets="@../styles/Dashstyle.css">
+                     <graphic>
+                        <FontIcon iconColor="WHITE" iconLiteral="fa-angle-double-left" iconSize="20" />
+                     </graphic>
+                  </Button>
+               </children>
+            </AnchorPane>
+            <AnchorPane fx:id="aboutStage" layoutX="10.0" layoutY="10.0" prefHeight="701.0" prefWidth="1101.0" styleClass="pane" stylesheets="@../styles/Dashstyle.css" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <children>
+                  <Label layoutX="320.0" prefHeight="124.0" prefWidth="556.0" styleClass="label_title" stylesheets="@../styles/Dashstyle.css" text="Desarrolladores" />
+                  <Label layoutX="400.0" layoutY="400.0" styleClass="labelDev" stylesheets="@../styles/Dashstyle.css" text="Sebastián Arias Aviles" />
+                  <Label layoutX="400.0" layoutY="300.0" styleClass="labelDev" stylesheets="@../styles/Dashstyle.css" text="Jocsan Ramírez Chaves" />
+                  <Label layoutX="400.0" layoutY="500.0" styleClass="labelDev" stylesheets="@../styles/Dashstyle.css" text="Abdías Ureña Soto" />
+                  <Button fx:id="btnWhats" layoutX="330.0" layoutY="300.0" mnemonicParsing="false" onAction="#link" prefHeight="30.0" prefWidth="50.0" style="-fx-background-color: TRANSPARENT;">
+                     <graphic>
+                        <FontIcon iconColor="#1ae198" iconLiteral="fa-whatsapp" iconSize="30" />
+                     </graphic>
+                  </Button>
+                  <Button fx:id="btnWhats1" layoutX="330.0" layoutY="400.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="50.0" style="-fx-background-color: TRANSPARENT;">
+                     <graphic>
+                        <FontIcon iconColor="#1ae198" iconLiteral="fa-whatsapp" iconSize="30" />
+                     </graphic>
+                  </Button>
+                  <Button fx:id="btnWhats2" layoutX="330.0" layoutY="500.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="50.0" style="-fx-background-color: TRANSPARENT;">
+                     <graphic>
+                        <FontIcon iconColor="#1ae198" iconLiteral="fa-whatsapp" iconSize="30" />
+                     </graphic>
+                  </Button>
+                  <Button fx:id="btnClose2" layoutX="1070.0" layoutY="1.0" mnemonicParsing="false" onMouseClicked="#Close" prefHeight="25.0" prefWidth="30.0" styleClass="btnClose" stylesheets="@../styles/Dashstyle.css">
+                     <graphic>
+                        <FontIcon iconColor="WHITE" iconLiteral="fa-close" iconSize="18" text="" />
+                     </graphic>
+                  </Button>
+                  <Button fx:id="btnMinimize2" layoutX="1032.0" layoutY="1.0" mnemonicParsing="false" onMouseClicked="#Minimize" prefHeight="25.0" prefWidth="30.0" styleClass="btnMinimize" stylesheets="@../styles/Dashstyle.css">
+                     <graphic>
+                        <FontIcon iconColor="WHITE" iconLiteral="fa-window-minimize" iconSize="18" />
+                     </graphic>
+                  </Button>
+                  <Button fx:id="btnBack1" mnemonicParsing="false" onAction="#backStage" prefHeight="25.0" prefWidth="35.0" styleClass="backButton" stylesheets="@../styles/Dashstyle.css">
+                     <graphic>
+                        <FontIcon iconColor="WHITE" iconLiteral="fa-angle-double-left" iconSize="20" />
+                     </graphic>
+                  </Button>
+               </children>
+            </AnchorPane>
+         </children>
+      </AnchorPane>
+   </children>
+</StackPane>

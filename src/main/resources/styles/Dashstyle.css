@@ -1,0 +1,85 @@
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap');
+
+.stackPane{
+    -fx-background-image:url('../images/background.jpg');
+    -fx-background-size: stretch, auto;
+}
+
+.label_title{
+    -fx-font-size: 70.0 pt;
+    -fx-font-family: 'Josefin Sans', bold;
+    -fx-text-align:center;
+    /*-fx-text-fill: linear-gradient(from 10% 10% to 100% 100%, #4CB8C4, #3CD3AD);*/
+    -fx-text-fill: linear-gradient(from 10% 10% to 100% 100%, #0cebeb, #20e3b2, #29ffc6);
+}
+
+.buttons{
+     -fx-font-size: 24.0 pt;
+     -fx-font-family: 'Josefin Sans', bold;
+     -fx-text-align:center;
+     -fx-text-fill: linear-gradient(from 10% 10% to 100% 100%, #0cebeb, #20e3b2, #29ffc6);
+     -fx-background-color: TRANSPARENT;
+     -fx-border-color: linear-gradient(from 10% 10% to 100% 100%, #0cebeb, #20e3b2, #29ffc6);
+     -fx-cursor: HAND;
+}
+
+.buttons:hover{
+    -fx-background-color: linear-gradient(from 10% 10% to 100% 100%, #0cebeb, #20e3b2, #29ffc6);
+    -fx-text-fill: #fff;
+}
+
+.btnClose{
+   -fx-background-color: TRANSPARENT;
+    -fx-cursor: HAND;
+}
+
+.btnClose:hover{
+   -fx-background-color: #D5174E;
+}
+
+.btnMinimize{
+   -fx-background-color: TRANSPARENT;
+   -fx-cursor: HAND;
+}
+.btnMinimize:hover{
+   -fx-background-color: #58656D;
+}
+/*End styles of MainStage.fxml*/
+
+/*RuleStage*/
+.pane{
+    -fx-background-image:url('../images/back2.jpg');
+    -fx-background-size: stretch, auto;
+}
+
+.pane{
+    -fx-background-color: TRANSPARENT;
+}
+.textArea{
+    -fx-font-size: 20.0 pt;
+    -fx-font-family: 'Josefin Sans', sans-serif;
+    -fx-text-fill: #fff;
+    -fx-text-alignment: justify;
+    -fx-alignment: center;
+ }
+
+.labelDev{
+    -fx-font-size: 28.0 pt;
+    -fx-font-family: 'Josefin Sans', sans-serif;
+    -fx-text-fill: #fff;
+    -fx-text-alignment: justify;
+    -fx-alignment: center;
+}
+.backButton{
+    -fx-background-color: TRANSPARENT;
+}
+
+.backButton:hover{
+    -fx-background-color: linear-gradient(from 10% 10% to 100% 100%, #0cebeb, #20e3b2, #29ffc6);
+}
+
+
+/*
+.textArea .content{
+    -fx-background-color: linear-gradient(from 10% 10% to 100% 100%, #293754, #293754);
+ }*/
