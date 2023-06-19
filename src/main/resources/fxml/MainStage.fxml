@@ -14,7 +14,7 @@
             <AnchorPane fx:id="mainStage" prefHeight="701.0" prefWidth="1101.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <children>
                   <Label layoutX="300.0" prefHeight="124.0" prefWidth="556.0" styleClass="label_title" stylesheets="@../styles/Dashstyle.css" text="Arboretum Game" />
-                  <Button fx:id="btnPlay" layoutX="500.0" layoutY="300.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="150.0" styleClass="buttons" stylesheets="@../styles/Dashstyle.css" text="Jugar" />
+                  <Button fx:id="btnPlay" layoutX="500.0" layoutY="300.0" mnemonicParsing="false" onAction="#Play" prefHeight="30.0" prefWidth="150.0" styleClass="buttons" stylesheets="@../styles/Dashstyle.css" text="Jugar" />
                   <Button fx:id="btnRules" layoutX="500.0" layoutY="400.0" mnemonicParsing="false" onAction="#changeStage" prefHeight="30.0" prefWidth="150.0" styleClass="buttons" stylesheets="@../styles/Dashstyle.css" text="Reglas" />
                   <Button fx:id="btnAbout" layoutX="500.0" layoutY="500.0" mnemonicParsing="false" onAction="#changeStage" prefHeight="30.0" prefWidth="150.0" styleClass="buttons" stylesheets="@../styles/Dashstyle.css" text="Acerca De" />
                   <Button fx:id="btnClose" layoutX="1069.0" layoutY="1.0" mnemonicParsing="false" onMouseClicked="#Close" prefHeight="25.0" prefWidth="30.0" styleClass="btnClose" stylesheets="@../styles/Dashstyle.css">

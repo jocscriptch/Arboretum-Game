@@ -78,8 +78,41 @@
     -fx-background-color: linear-gradient(from 10% 10% to 100% 100%, #0cebeb, #20e3b2, #29ffc6);
 }
 
-
 /*
 .textArea .content{
     -fx-background-color: linear-gradient(from 10% 10% to 100% 100%, #293754, #293754);
  }*/
+
+ /*CreateRoomStage*/
+ .labelCreate{
+    -fx-font-size: 50.0 pt;
+    -fx-font-family: 'Josefin Sans', sans-serif;
+    -fx-text-fill: #fff;
+    -fx-text-alignment: justify;
+    -fx-alignment: center;
+ }
+ .textFieldCreateGame{
+     -fx-background-color: TRANSPARENT;
+     -fx-font-size: 25.0 pt;
+     -fx-font-family: 'Josefin Sans', sans-serif;
+     -fx-border-color: linear-gradient(from 10% 10% to 100% 100%, #0cebeb, #20e3b2, #29ffc6);
+     -fx-text-fill: #fff;
+     -fx-text-alignment: justify;
+     -fx-alignment: center;
+     -fx-prompt-text-fill: #fff;
+ }
+
+ .btnCreateGame{
+       -fx-font-size: 30.0 pt;
+       -fx-font-family: 'Josefin Sans', bold;
+       -fx-text-align:center;
+       -fx-text-fill: white;
+       -fx-background-color: TRANSPARENT;
+       -fx-border-color: linear-gradient(from 10% 10% to 100% 100%, #0cebeb, #20e3b2, #29ffc6);
+       -fx-cursor: HAND;
+ }
+
+ .btnCreateGame:hover{
+    -fx-background-color: linear-gradient(from 10% 10% to 100% 100%, #0cebeb, #20e3b2, #29ffc6);
+    -fx-text-fill: #fff;
+}

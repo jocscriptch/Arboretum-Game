@@ -87,6 +87,23 @@ public class MainStageController implements Initializable {
     }
 
     @FXML
+    public void Play(ActionEvent event) throws IOException {
+
+        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/fxml/CreateRoom.fxml")));
+        Scene scene = new Scene(root, 1100, 700);
+        Stage stage = new Stage();
+        stage.setScene(scene);
+        stage.initStyle(StageStyle.TRANSPARENT);
+        stage.show();
+
+        // Cerrar la ventana MainStage
+        Stage mainStage = (Stage) btnPlay.getScene().getWindow();
+        mainStage.close();
+
+
+    }
+
+    @FXML
     public void Close(MouseEvent event) {
         System.exit(0);
     }
