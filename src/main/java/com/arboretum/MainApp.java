@@ -22,7 +22,7 @@ public class MainApp extends Application {
     public void start(Stage primaryStage) throws Exception {
         Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/fxml/MainStage.fxml")));
 
-        Scene scene = new Scene(root, 1300, 700);
+        Scene scene = new Scene(root, 1100, 700);
 
 
         root.setOnMousePressed((MouseEvent event) -> {
