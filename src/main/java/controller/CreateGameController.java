@@ -16,6 +16,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.Objects;
 import java.util.ResourceBundle;
+import util.ClientConnection;
 
 public class CreateGameController implements Initializable {
 
@@ -91,6 +92,10 @@ public class CreateGameController implements Initializable {
     void Minimize(MouseEvent event) {
         Stage stage = (Stage) btnMinimize.getScene().getWindow();
         stage.setIconified(true);
+    }
+
+    void CreateNewPlayer(){
+
     }
 
 }

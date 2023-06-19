@@ -13,38 +13,35 @@ public class ClientConnection {
     private DataOutputStream writeInformation;
     private static ClientConnection instance;
 
-    public static ClientConnection getInstance(String ipAddress) {
-        if (instance == null) {
+    public static ClientConnection getInstance(String ipAddress){
+        if(instance == null){
             instance = new ClientConnection(ipAddress);
         }
         return instance;
     }
-
-    private ClientConnection(String ipAddress) {
-        try {
+    private ClientConnection(String ipAddress){
+        try{
             conecction = new Socket(ipAddress, 8000);
             readInformation = new DataInputStream(new BufferedInputStream(conecction.getInputStream()));
             writeInformation = new DataOutputStream(new BufferedOutputStream(conecction.getOutputStream()));
-        } catch (UnknownHostException uhe) {
+        }catch (UnknownHostException uhe){
             System.out.println("Access denied");
-        } catch (IOException ioe) {
-            System.out.println("Error in the connection: " + ioe.getMessage());
+        }catch (IOException ioe){
+            System.out.println("Error in the connection: "+ ioe.getMessage());
         }
     }
-
-    public DataInputStream getReadInformation() {
+    public DataInputStream getReadInformation(){
         return readInformation;
     }
-
-    public DataOutputStream getWriteInformation() {
+    public DataOutputStream getWriteInformation(){
         return writeInformation;
     }
     public String responseMessageToServer() {
         byte[] buffer = new byte[1024];
         try {
             int bufferData = readInformation.read(buffer);
-             String response = new String(buffer, 0, bufferData, "UTF-8");
-             return response;
+            String response = new String(buffer, 0, bufferData, "UTF-8");
+            return response;
         } catch (IOException ioe) {
             System.out.println(ioe.getMessage());
         }
@@ -59,4 +56,3 @@ public class ClientConnection {
         }
     }
 }
-
