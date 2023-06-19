@@ -151,7 +151,7 @@ public class MainStageController implements Initializable {
     @FXML
     public void link(){
         btnWhats.setOnAction(event -> {
-            String url = "https://api.whatsapp.com/send/?phone=50683626991&text&type=phone_number&app_absent=0";
+            String url = "";
             try {
                 Desktop.getDesktop().browse(new URI(url));
             } catch (IOException | URISyntaxException e) {

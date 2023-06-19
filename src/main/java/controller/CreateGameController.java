@@ -37,6 +37,9 @@ public class CreateGameController implements Initializable {
     @FXML
     private Button btnMinimize;
 
+    @FXML
+    private TextField textNamePlayer;
+
     private double x = 0;
     private double y = 0;
 
