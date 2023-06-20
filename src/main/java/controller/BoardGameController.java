@@ -11,6 +11,8 @@ import javafx.scene.layout.*;
 import javafx.stage.Window;
 import javafx.util.Duration;
 import model.Card;
+import util.ClientConnection;
+
 import java.util.Stack;
 
 public class BoardGameController {
@@ -42,6 +44,8 @@ public class BoardGameController {
 
     Stack<Integer> rows = new Stack();
     Stack<Integer> colums = new Stack();
+
+    ClientConnection client = ClientConnection.getInstance();
 
 
     public void initialize() {
@@ -155,11 +159,11 @@ public class BoardGameController {
     //asignado al boton rival
     @FXML
     void verRival(ActionEvent event){
-        /*System.out.println("Ejecutando");
-        ClientConnection client = ClientConnection.getInstance();
-        System.out.println(txtRow.getText());
-        client.sendMessageToServer(txtRow.getText());
-        System.out.println(client.responseMessageToServer());*/
+        System.out.println("Ejecutando");
+        client.sendMessageToServer("*user1:get_cards");
+        String []aux = client.responseMessageToServer().split("\n");
+        cardBoard[2][2].setExtension(aux[3]);
+        initGridPane();
     }
 
     public void deckCard() {
