@@ -99,11 +99,23 @@ public class CreateGameController implements Initializable {
     }
 
     @FXML
-    void CreateNewPlayer() {
+    void CreateNewPlayer() throws IOException {
+        /*
         System.out.println("Ejecutando");
         ClientConnection client = ClientConnection.getInstance();
         System.out.println(textNamePlayer.getText());
         client.sendMessageToServer(textNamePlayer.getText());
+         */
+        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/fxml/BoardGame.fxml")));
+        Scene scene = new Scene(root, 1100, 700);
+        Stage stage = new Stage();
+        stage.setScene(scene);
+        stage.setMaximized(true);
+        stage.show();
+
+        // Cerrar la ventana Creatroom
+        Stage room = (Stage) btnCreateGame.getScene().getWindow();
+        room.close();
     }
 
 }
