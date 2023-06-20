@@ -31,11 +31,6 @@ public class BoardGameController {
     private Button btnVerMazo;
     @FXML
     private Button btnEnviar;
-    @FXML
-    private TextField txtColumn;
-    @FXML
-    private TextField txtRow;
-
 
     private Card[][] cardBoard = new Card[6][6];
 
@@ -68,7 +63,7 @@ public class BoardGameController {
                         true));
         grid.setBackground(new Background(backgroundImage));*/
         grid = new GridPane();
-        grid.setAlignment(Pos.CENTER);
+        //grid.setAlignment(Pos.CENTER);
         grid.setVgap(10);
         grid.setHgap(10);
         grid.setPrefSize(800,500);
@@ -135,7 +130,7 @@ public class BoardGameController {
                     rows.push(row);
                     colums.push(colum);
                     countFirst += 1;
-                    cardBoard[row][colum].setExtension("/images/cards/Cornejo1.png");
+                    cardBoard[row][colum].setExtension("/images/cards/Cornejo2.png");
                     cardBoard[row][colum].setPlaced(true);
                 }
                 if(!isDiagonal(row, colum) && !isOrtogonal(row,colum)){
@@ -160,10 +155,10 @@ public class BoardGameController {
     //asignado al boton rival
     @FXML
     void verRival(ActionEvent event){
-        System.out.println("Ejecutando");
+        /*System.out.println("Ejecutando");
         ClientConnection client = ClientConnection.getInstance();
         System.out.println(txtRow.getText());
         client.sendMessageToServer(txtRow.getText());
-        System.out.println(client.responseMessageToServer());
+        System.out.println(client.responseMessageToServer());*/
     }
 }

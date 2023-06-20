@@ -119,7 +119,7 @@ public class CreateGameController implements Initializable {
         Scene scene = new Scene(root, 1100, 700);
         Stage stage = new Stage();
         stage.setScene(scene);
-        stage.setMaximized(true);
+        //stage.setMaximized(true);
         stage.show();
 
         // Cerrar la ventana Creatroom
