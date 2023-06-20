@@ -116,7 +116,7 @@ public class CreateGameController implements Initializable {
 
 
         Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/fxml/BoardGame.fxml")));
-        Scene scene = new Scene(root, 1100, 700);
+        Scene scene = new Scene(root, 1100, 650);
         Stage stage = new Stage();
         stage.setScene(scene);
         //stage.setMaximized(true);

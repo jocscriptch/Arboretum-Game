@@ -1,72 +1,71 @@
 package  controller;
+import javafx.animation.RotateTransition;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.geometry.Pos;
-import javafx.scene.Group;
-import javafx.scene.Node;
 import javafx.scene.control.Button;
-import javafx.scene.control.TextField;
+import javafx.scene.control.ListView;
+import javafx.scene.control.Tooltip;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.*;
-import javafx.scene.text.Font;
-import javafx.scene.text.Text;
+import javafx.stage.Window;
+import javafx.util.Duration;
 import model.Card;
-
 import java.util.Stack;
-import util.*;
 
 public class BoardGameController {
-    private static final int BOARD_SIZE = 6;  // ajusta a tu gusto
-
+    private static final int BOARD_SIZE = 7;  // ajustar
 
     @FXML
     private AnchorPane principal;
+
+    @FXML
+    private AnchorPane root;
+
     @FXML
     private GridPane grid;
+
     @FXML
     private Button btnVerRival;
+
     @FXML
     private Button btnVerMazo;
+
     @FXML
     private Button btnEnviar;
 
-    private Card[][] cardBoard = new Card[6][6];
+    private Card[][] cardBoard = new Card[7][7];
 
     private int countFirst = 0;
-    private int row = 0;
-    private int colum = 0;
+    private int row = -1;
+    private int colum = -1;
 
     Stack<Integer> rows = new Stack();
     Stack<Integer> colums = new Stack();
 
 
     public void initialize() {
-        // Establecer la imagen de fondo
+
         initCardMatriz();
         initGridPane();
-    }
-    public void initGridPane(){
-        principal.getChildren().remove(grid);
 
-        Image image = new Image("/images/boardImage.jpg");  // sustituye "image_path" por la ruta a tu imagen
-        /*BackgroundImage backgroundImage = new BackgroundImage(image,
-                BackgroundRepeat.REPEAT,
-                BackgroundRepeat.REPEAT,
-                BackgroundPosition.CENTER,
-                new BackgroundSize(BackgroundSize.AUTO,
-                        BackgroundSize.AUTO,
-                        true,
-                        true,
-                        true,
-                        true));
-        grid.setBackground(new Background(backgroundImage));*/
+        btnEnviar.setLayoutX(500);
+        btnEnviar.setLayoutY(2);
+        btnVerMazo.setLayoutX(500);
+        btnVerMazo.setLayoutY(60);
+        btnVerRival.setLayoutX(500);
+        btnVerRival.setLayoutY(120);
+
+        deckCard();
+
+    }
+
+    public void initGridPane(){
+        root.getChildren().remove(grid);
+
         grid = new GridPane();
-        //grid.setAlignment(Pos.CENTER);
         grid.setVgap(10);
         grid.setHgap(10);
-        grid.setPrefSize(800,500);
 
         for (int i = 0; i < BOARD_SIZE; i++) {
             for (int j = 0; j < BOARD_SIZE; j++) {
@@ -83,7 +82,8 @@ public class BoardGameController {
                 grid.add(img, j, i);
             }
         }
-        principal.getChildren().add(grid);
+        root.getChildren().add(grid);
+
         grid.getChildren().forEach(node -> {
             node.setOnMouseClicked(event -> {
                 colum = GridPane.getColumnIndex(node);
@@ -107,9 +107,9 @@ public class BoardGameController {
     }
     public boolean isDiagonal(int row, int colum){
         if (Math.abs(row - rows.lastElement()) == 1 && Math.abs(colum - colums.lastElement()) == 1) {
-            return true;
+            return false;
         }
-        return false;
+        return true;
     }
 
     public boolean isOrtogonal(int row, int colum){
@@ -126,14 +126,14 @@ public class BoardGameController {
     void SendGarden(ActionEvent event) {
         if(isBoarder(row, colum) || countFirst > 0){
             if(!rows.isEmpty() && !colums.isEmpty()){
-                if(!isDiagonal(row, colum) && isOrtogonal(row,colum) || countFirst == 0) {
+                if(isDiagonal(row, colum) && isOrtogonal(row,colum) || countFirst == 0) {
                     rows.push(row);
                     colums.push(colum);
                     countFirst += 1;
                     cardBoard[row][colum].setExtension("/images/cards/Cornejo2.png");
                     cardBoard[row][colum].setPlaced(true);
                 }
-                if(!isDiagonal(row, colum) && !isOrtogonal(row,colum)){
+                if(isDiagonal(row, colum) && !isOrtogonal(row,colum)){
                     rows.push(row);
                     colums.push(colum);
                     countFirst += 1;
@@ -160,5 +160,9 @@ public class BoardGameController {
         System.out.println(txtRow.getText());
         client.sendMessageToServer(txtRow.getText());
         System.out.println(client.responseMessageToServer());*/
+    }
+
+    public void deckCard() {
+
     }
 }

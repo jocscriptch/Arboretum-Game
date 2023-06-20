@@ -1,6 +1,21 @@
 @import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap');
 
 .anchor{
-    -fx-background-image:url('../images/boardImage.jpg');
+    -fx-background-image:url('../images/board.jpg');
     -fx-background-size: stretch, auto;
+}
+
+.buttons{
+     -fx-font-size: 12.0 pt;
+     -fx-font-family: 'Josefin Sans', bold;
+     -fx-text-align:center;
+     -fx-text-fill: linear-gradient(from 10% 10% to 100% 100%, #0cebeb, #20e3b2, #29ffc6);
+     -fx-background-color: TRANSPARENT;
+     -fx-border-color: linear-gradient(from 10% 10% to 100% 100%, #0cebeb, #20e3b2, #29ffc6);
+     -fx-cursor: HAND;
+}
+
+.buttons:hover{
+    -fx-background-color: linear-gradient(from 10% 10% to 100% 100%, #0cebeb, #20e3b2, #29ffc6);
+    -fx-text-fill: #fff;
 }
