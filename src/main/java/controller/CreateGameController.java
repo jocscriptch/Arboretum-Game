@@ -12,11 +12,14 @@ import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
+import java.awt.event.ActionEvent;
 import java.io.IOException;
 import java.net.URL;
 import java.util.Objects;
 import java.util.ResourceBundle;
 import util.ClientConnection;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 
 public class CreateGameController implements Initializable {
 
@@ -43,6 +46,7 @@ public class CreateGameController implements Initializable {
 
     private double x = 0;
     private double y = 0;
+
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -94,8 +98,12 @@ public class CreateGameController implements Initializable {
         stage.setIconified(true);
     }
 
-    void CreateNewPlayer(){
-
+    @FXML
+    void CreateNewPlayer() {
+        System.out.println("Ejecutando");
+        ClientConnection client = ClientConnection.getInstance();
+        System.out.println(textNamePlayer.getText());
+        client.sendMessageToServer(textNamePlayer.getText());
     }
 
 }

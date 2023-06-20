@@ -13,15 +13,17 @@ public class ClientConnection {
     private DataOutputStream writeInformation;
     private static ClientConnection instance;
 
-    public static ClientConnection getInstance(String ipAddress){
+    public static final String IP_SERVER = "192.168.100.14";
+
+    public static ClientConnection getInstance(){
         if(instance == null){
-            instance = new ClientConnection(ipAddress);
+            instance = new ClientConnection();
         }
         return instance;
     }
-    private ClientConnection(String ipAddress){
+    private ClientConnection(){
         try{
-            conecction = new Socket(ipAddress, 8000);
+            conecction = new Socket(IP_SERVER, 8000);
             readInformation = new DataInputStream(new BufferedInputStream(conecction.getInputStream()));
             writeInformation = new DataOutputStream(new BufferedOutputStream(conecction.getOutputStream()));
         }catch (UnknownHostException uhe){
