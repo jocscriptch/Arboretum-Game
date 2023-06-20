@@ -98,14 +98,23 @@ public class CreateGameController implements Initializable {
         stage.setIconified(true);
     }
 
+
     @FXML
     void CreateNewPlayer() throws IOException {
-        /*
-        System.out.println("Ejecutando");
+
+        /*System.out.println("Ejecutando");
         ClientConnection client = ClientConnection.getInstance();
         System.out.println(textNamePlayer.getText());
         client.sendMessageToServer(textNamePlayer.getText());
-         */
+        System.out.println(client.responseMessageToServer());
+        // codigo server
+        try {
+            System.out.println(client.responseMessageToServer());
+        } catch (StringIndexOutOfBoundsException e){
+            System.out.println("Error no recibe nada");
+        }*/
+
+
         Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/fxml/BoardGame.fxml")));
         Scene scene = new Scene(root, 1100, 700);
         Stage stage = new Stage();

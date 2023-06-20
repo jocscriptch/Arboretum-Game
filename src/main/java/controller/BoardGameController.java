@@ -17,7 +17,7 @@ import org.controlsfx.control.spreadsheet.Grid;
 
 import javax.swing.*;
 import java.util.Stack;
-
+import util.*;
 
 public class BoardGameController {
     private static final int BOARD_SIZE = 6;  // ajusta a tu gusto
@@ -150,7 +150,15 @@ public class BoardGameController {
         }
         initGridPane();
     }
-
+    //asignado al boton rival
+    @FXML
+    void verRival(ActionEvent event){
+        System.out.println("Ejecutando");
+        ClientConnection client = ClientConnection.getInstance();
+        System.out.println(txtRow.getText());
+        client.sendMessageToServer(txtRow.getText());
+        System.out.println(client.responseMessageToServer());
+    }
 
 
 
