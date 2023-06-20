@@ -164,5 +164,7 @@ public class BoardGameController {
 
     public void deckCard() {
 
+        System.out.println("hola");
+
     }
 }
