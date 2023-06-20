@@ -1,9 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.GridPane?>
 
-<AnchorPane xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/11.0.1" fx:controller="controller.BoardGameController">
-    <GridPane fx:id="grid" AnchorPane.topAnchor="0" AnchorPane.rightAnchor="0" AnchorPane.bottomAnchor="0" AnchorPane.leftAnchor="0">
+<AnchorPane fx:id="principal" minHeight="700.0" minWidth="800.0" prefHeight="800.0" prefWidth="972.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.BoardGameController">
+    <GridPane fx:id="grid" layoutX="14.0" layoutY="62.0" minHeight="541.0" minWidth="450.0" prefHeight="677.0" prefWidth="659.0" AnchorPane.bottomAnchor="61.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="299.0" AnchorPane.topAnchor="62.0">
     </GridPane>
+   <Button fx:id="btnVerRival" layoutX="802.0" layoutY="548.0" mnemonicParsing="false" prefHeight="47.0" prefWidth="104.0" text="Ver Rival" />
+   <Button fx:id="btnVerMazo" layoutX="802.0" layoutY="643.0" mnemonicParsing="false" prefHeight="47.0" prefWidth="104.0" text="Ver Mazo" />
+   <Button fx:id="btnEnviar" layoutX="802.0" layoutY="458.0" mnemonicParsing="false" onAction="#SendGarden" prefHeight="47.0" prefWidth="104.0" text="Enviar al Jardin" />
+   <TextField fx:id="txtColumn" layoutX="780.0" layoutY="401.0" promptText="Columna" />
+   <TextField fx:id="txtRow" layoutX="780.0" layoutY="350.0" promptText="Fila" />
 </AnchorPane>
