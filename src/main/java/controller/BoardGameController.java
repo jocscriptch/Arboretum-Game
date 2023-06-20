@@ -36,6 +36,34 @@ public class BoardGameController {
     @FXML
     private Button btnEnviar;
 
+    @FXML
+    private FlowPane flowpane;
+
+    @FXML
+    private ImageView imgV1;
+
+    @FXML
+    private ImageView imgV2;
+
+    @FXML
+    private ImageView imgV3;
+
+    @FXML
+    private ImageView imgV4;
+
+    @FXML
+    private ImageView imgV5;
+
+    @FXML
+    private ImageView imgV6;
+
+    @FXML
+    private ImageView imgV7;
+
+    @FXML
+    private Button maceBtn;
+
+
     private Card[][] cardBoard = new Card[7][7];
 
     private int countFirst = 0;
@@ -61,6 +89,9 @@ public class BoardGameController {
         btnVerRival.setLayoutY(120);
 
         deckCard();
+        flowpane.getChildren().clear();
+        Mace();
+
 
     }
 
@@ -160,7 +191,7 @@ public class BoardGameController {
     @FXML
     void verRival(ActionEvent event){
         System.out.println("Ejecutando");
-        client.sendMessageToServer("*user1:get_cards");
+        client.sendMessageToServer("user1:get_cards");
         String []aux = client.responseMessageToServer().split("\n");
         cardBoard[2][2].setExtension(aux[3]);
         initGridPane();
@@ -170,5 +201,19 @@ public class BoardGameController {
 
         System.out.println("hola");
 
+    }
+
+    public void Mace(){
+        client.sendMessageToServer("user1:get_cards");
+        String response = client.responseMessageToServer();
+        String []aux = response.split("\n");
+        ImageView[] imageViews = {imgV1,imgV2,imgV3,imgV4,imgV5,imgV6,imgV7};
+        flowpane.getChildren().clear();
+        for (int i = 0; i < aux.length && i < imageViews.length; i++) {
+            String imagePath = aux[i];
+            Image image = new Image(imagePath);
+            imageViews[i].setImage(image);
+            flowpane.getChildren().add(imageViews[i]);
+        }
     }
 }

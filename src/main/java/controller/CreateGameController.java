@@ -47,6 +47,7 @@ public class CreateGameController implements Initializable {
     private double x = 0;
     private double y = 0;
 
+    ClientConnection client = ClientConnection.getInstance();
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -80,11 +81,11 @@ public class CreateGameController implements Initializable {
 
         });
 
-
         stage.initStyle(StageStyle.TRANSPARENT);
         scene.setFill(Color.TRANSPARENT);
         stage.setScene(scene);
         stage.show();
+
 
         // Cerrar la ventana CreateRoom
         Stage   createroom = (Stage) btnClose.getScene().getWindow();
@@ -103,8 +104,8 @@ public class CreateGameController implements Initializable {
     void CreateNewPlayer() throws IOException {
 
         System.out.println("Ejecutando");
-        ClientConnection client = ClientConnection.getInstance();
         System.out.println(textNamePlayer.getText());
+        //ClientConnection client = ClientConnection.getInstance();
         client.sendMessageToServer(textNamePlayer.getText()+":Nothing");
         System.out.println(client.responseMessageToServer());
         // codigo server
