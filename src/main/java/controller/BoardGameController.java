@@ -23,21 +23,16 @@ public class BoardGameController {
 
     @FXML
     private AnchorPane principal;
-
     @FXML
     private GridPane grid;
     @FXML
     private Button btnVerRival;
-
     @FXML
     private Button btnVerMazo;
-
     @FXML
     private Button btnEnviar;
-
     @FXML
     private TextField txtColumn;
-
     @FXML
     private TextField txtRow;
 
@@ -58,6 +53,8 @@ public class BoardGameController {
         initGridPane();
     }
     public void initGridPane(){
+        principal.getChildren().remove(grid);
+
         Image image = new Image("/images/boardImage.jpg");  // sustituye "image_path" por la ruta a tu imagen
         /*BackgroundImage backgroundImage = new BackgroundImage(image,
                 BackgroundRepeat.REPEAT,
@@ -70,6 +67,7 @@ public class BoardGameController {
                         true,
                         true));
         grid.setBackground(new Background(backgroundImage));*/
+        grid = new GridPane();
         grid.setAlignment(Pos.CENTER);
         grid.setVgap(10);
         grid.setHgap(10);
@@ -90,6 +88,7 @@ public class BoardGameController {
                 grid.add(img, j, i);
             }
         }
+        principal.getChildren().add(grid);
         grid.getChildren().forEach(node -> {
             node.setOnMouseClicked(event -> {
                 colum = GridPane.getColumnIndex(node);
@@ -97,6 +96,7 @@ public class BoardGameController {
             });
         });
     }
+
     public void initCardMatriz(){
         for(int i=0; i< BOARD_SIZE; i++){
             for(int j=0; j< BOARD_SIZE; j++){
