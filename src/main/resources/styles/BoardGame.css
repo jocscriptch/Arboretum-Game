@@ -46,6 +46,13 @@
      -fx-border-color: linear-gradient(from 10% 10% to 100% 100%, #0cebeb, #20e3b2, #29ffc6);
      -fx-cursor: HAND;
 }
+.label{
+    -fx-font-size: 20.0 pt;
+    -fx-font-family: 'Josefin Sans', bold;
+    -fx-text-align:center;
+    -fx-text-fill: linear-gradient(from 10% 10% to 100% 100%, #0cebeb, #20e3b2, #29ffc6);
+    -fx-cursor: CLOSED_HAND;
+}
 
 .buttons:hover{
     -fx-background-color: linear-gradient(from 10% 10% to 100% 100%, #0cebeb, #20e3b2, #29ffc6);

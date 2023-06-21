@@ -26,5 +26,6 @@
             <GridPane fx:id="gridMace" prefHeight="345.0" prefWidth="321.0" />
          </children>
       </AnchorPane>
+      <Button fx:id="btnRobar" layoutX="736.0" layoutY="480.0" mnemonicParsing="false" onAction="#StealOneCardMace" prefHeight="50.0" prefWidth="110.0" styleClass="buttons" stylesheets="@../styles/BoardGame.css" text="Roba Mazo" />
    </children>
 </AnchorPane>

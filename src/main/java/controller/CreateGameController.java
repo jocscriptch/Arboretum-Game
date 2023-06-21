@@ -117,7 +117,7 @@ public class CreateGameController implements Initializable {
             }*/
 
 
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/BoardGame.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/BoardGame1.fxml"));
             Parent root = loader.load();
             BoardGameController boardController = loader.getController();
 
