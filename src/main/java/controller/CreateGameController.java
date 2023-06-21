@@ -1,5 +1,4 @@
 package controller;
-
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -11,15 +10,11 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
-
-import java.awt.event.ActionEvent;
 import java.io.IOException;
 import java.net.URL;
 import java.util.Objects;
 import java.util.ResourceBundle;
 import util.ClientConnection;
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
 
 public class CreateGameController implements Initializable {
 
@@ -47,7 +42,9 @@ public class CreateGameController implements Initializable {
     private double x = 0;
     private double y = 0;
 
-    ClientConnection client = ClientConnection.getInstance();
+    // ClientConnection client = ClientConnection.getInstance();
+
+
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -102,32 +99,27 @@ public class CreateGameController implements Initializable {
 
     @FXML
     void CreateNewPlayer() throws IOException {
+        try {
+            String namePlayer = textNamePlayer.getText();
+            PlayerSinglenton.getInstance().setName(namePlayer);
 
-        System.out.println("Ejecutando");
-        System.out.println(textNamePlayer.getText());
-        //ClientConnection client = ClientConnection.getInstance();
-        client.sendMessageToServer(textNamePlayer.getText()+":Nothing");
-        System.out.println(client.responseMessageToServer());
-        // codigo server
-        /*try {
-            System.out.println(client.responseMessageToServer());
-        } catch (StringIndexOutOfBoundsException e){
-            System.out.println("Error no recibe nada");
-        }*/
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/BoardGame.fxml"));
+            Parent root = loader.load();
+            BoardGameController boardController = loader.getController();
 
+            Scene scene = new Scene(root, 1100, 650);
+            Stage stage = new Stage();
+            stage.setScene(scene);
+            stage.show();
 
-        // Cerrar la ventana Creatroom
-        Stage room = (Stage) btnCreateGame.getScene().getWindow();
-        room.close();
-
-        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/fxml/BoardGame.fxml")));
-        Scene scene = new Scene(root, 1100, 650);
-        Stage stage = new Stage();
-        stage.setScene(scene);
-        //stage.setMaximized(true);
-        stage.show();
-
-
+            // Cerrar la ventana CreateRoom
+            Stage createroom = (Stage) btnCreateGame.getScene().getWindow();
+            createroom.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
+
 }
+

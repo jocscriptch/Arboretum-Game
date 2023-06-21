@@ -1,14 +1,11 @@
 package com.arboretum;
-
 import javafx.application.Application;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
-
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.StageStyle;
-
 import java.util.Objects;
 
 public class MainApp extends Application {
