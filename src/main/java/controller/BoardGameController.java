@@ -204,7 +204,7 @@ public class BoardGameController {
     }
 
     public void Mace(){
-        client.sendMessageToServer("user1:get_cards");
+        client.sendMessageToServer("user3:get_cards");
         String response = client.responseMessageToServer();
         String []aux = response.split("\n");
         ImageView[] imageViews = {imgV1,imgV2,imgV3,imgV4,imgV5,imgV6,imgV7};
