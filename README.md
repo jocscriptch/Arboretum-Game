@@ -29,4 +29,8 @@ Clone the project
 ```bash
   git clone https://github.com/jocscriptch/Arboretum-Game.git
 ```
+## BackCards
+![backcard1](https://github.com/jocscriptch/Arboretum-Game/assets/121000948/3339ab69-23bb-434b-855b-75bb79ed33db)
+## FrontCards
+![Sauce1](https://github.com/jocscriptch/Arboretum-Game/assets/121000948/867356d4-2eb4-48ef-81fa-84124516d201)
 
