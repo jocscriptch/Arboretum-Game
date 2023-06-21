@@ -21,7 +21,6 @@ import javafx.stage.WindowEvent;
 import java.io.IOException;
 import java.util.Objects;
 import java.util.Stack;
-import com.google.gson.Gson;
 
 public class BoardGameController {
     private static final int BOARD_SIZE = 7;  // ajustar
@@ -78,12 +77,24 @@ public class BoardGameController {
 
     private Stage stageOpponent;
 
+    private String myName = "";
 
 
     public void initialize() {
 
         initCardMatriz();
         initGridPane();
+
+        myName = client.responseMessageToServer();
+        System.out.println(myName);
+        if(myName != player.getName()){
+            btnEnviar.isDisabled();
+            btnEnviar.isDisabled();
+            btnVerRival.isDisabled();
+            btnVerRival.isDisabled();
+            btnRobar.isDisabled();
+            btnRobar.isDisabled();
+        }
 
         btnEnviar.setLayoutX(610);
         btnEnviar.setLayoutY(2);
@@ -116,14 +127,10 @@ public class BoardGameController {
             for (int j = 0; j < BOARD_SIZE; j++) {
                 int row = i+1;
                 int colum = j+1;
-                //Text t = new Text("F:"+row+"|C: "+colum);
-                //VBox vbox =  new VBox(t);
                 String extension = cardBoard[i][j].getExtension();
                 ImageView img = new ImageView(extension);
                 img.setFitWidth(60);
                 img.setFitHeight(100);
-                //vbox.getChildren().add(img);
-                //grid.add(vbox, j, i);
                 grid.add(img, j, i);
             }
         }
@@ -197,40 +204,46 @@ public class BoardGameController {
     @FXML
     void SendGarden(ActionEvent event) {
         String card = cardMace[rowMace][columMace].getExtension();
-        System.out.println(cardMace);
-        cardMace[rowMace][columMace].setExtension("/images/cards/backcard1.png");
         if(isBoarder(row, colum) || countFirst > 0){
             if(!rows.isEmpty() && !colums.isEmpty()){
                 if(isDiagonal(row, colum) && isOrtogonal(row,colum) || countFirst == 0) {
+                    System.out.println(cardMace);
+                    cardMace[rowMace][columMace].setExtension("/images/cards/backcard1.png");
                     rows.push(row);
                     colums.push(colum);
                     countFirst += 1;
-                    cardBoard[row][colum].setExtension(card/*"/images/cards/Cornejo2.png"*/);
+                    cardBoard[row][colum].setExtension(card);
                     cardBoard[row][colum].setPlaced(true);
                 }
-                if(isDiagonal(row, colum) && !isOrtogonal(row,colum)){
+                else if(isDiagonal(row, colum) && !isOrtogonal(row,colum)){
+                    System.out.println(cardMace);
+                    cardMace[rowMace][columMace].setExtension("/images/cards/backcard1.png");
                     rows.push(row);
                     colums.push(colum);
                     countFirst += 1;
-                    cardBoard[row][colum].setExtension( card/*"/images/cards/Arce1.png"*/);
+                    cardBoard[row][colum].setExtension( card);
                     cardBoard[row][colum].setPlaced(true);
+                }
+                else{
+                    errorNotification("No se puede colocar en una diagonal");
                 }
             }else{
+                System.out.println(cardMace);
+                cardMace[rowMace][columMace].setExtension("/images/cards/backcard1.png");
                 rows.push(row);
                 colums.push(colum);
                 countFirst+=1;
-                cardBoard[row][colum].setExtension(card/*"/images/cards/Jacaranda1.png"*/);
+                cardBoard[row][colum].setExtension(card);
                 cardBoard[row][colum].setPlaced(true);
             }
         }else {
-
+            errorNotification("No es posible colocar en cuadros de interiores, empieza por los exteriores");
         }
         initGridPane();
         fillMace();
         grid.setOnMousePressed(this::onMousePressed);
         grid.setOnMouseDragged(this::onMouseDragged);
     }
-    //asignado al boton rival
     @FXML
     public void verRival() throws IOException {
         System.out.println("Viendo Rivales");
@@ -239,8 +252,7 @@ public class BoardGameController {
         for(String a: aux){
             System.out.println(a);
         }
-        //cardBoard[2][2].setExtension(aux[3]);
-        //initGridPane();*/
+
 
         root.setEffect(new GaussianBlur(10.0));
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/StageOpponent.fxml"));

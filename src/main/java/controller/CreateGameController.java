@@ -49,7 +49,7 @@ public class CreateGameController implements Initializable {
     private double x = 0;
     private double y = 0;
 
-    //ClientConnection client = ClientConnection.getInstance();
+    ClientConnection client = ClientConnection.getInstance();
 
 
 
@@ -91,7 +91,7 @@ public class CreateGameController implements Initializable {
         stage.show();
 
 
-        // Cerrar la ventana CreateRoom
+
         Stage   createroom = (Stage) btnClose.getScene().getWindow();
         createroom.close();
 
@@ -113,27 +113,18 @@ public class CreateGameController implements Initializable {
             playerName.setName(namePlayer);
             System.out.println("Ejecutando");
             System.out.println(textNamePlayer.getText());
-            //ClientConnection client = ClientConnection.getInstance();
-            //client.sendMessageToServer(textNamePlayer.getText()+":Nothing");
-            //System.out.println(client.responseMessageToServer());
-            // codigo server
-            /*try {
-                System.out.println(client.responseMessageToServer());
-            } catch (StringIndexOutOfBoundsException e){
-                System.out.println("Error no recibe nada");
-            }*/
+            client.sendMessageToServer(textNamePlayer.getText()+":Nothing");
 
 
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/BoardGame1.fxml"));
             Parent root = loader.load();
-            BoardGameController boardController = loader.getController();
 
             Scene scene = new Scene(root, 1100, 650);
             Stage stage = new Stage();
             stage.setScene(scene);
             stage.show();
 
-            // Cerrar la ventana CreateRoom
+
             Stage createroom = (Stage) btnCreateGame.getScene().getWindow();
             createroom.close();
         } catch (IOException e) {

@@ -13,7 +13,7 @@ public class ClientConnection {
     private DataOutputStream writeInformation;
     private static ClientConnection instance;
 
-    public static final String IP_SERVER = "192.168.100.14";
+    public static final String IP_SERVER = "192.168.0.3";
 
     public static ClientConnection getInstance(){
         if(instance == null){
