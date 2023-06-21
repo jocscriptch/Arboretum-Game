@@ -2,18 +2,25 @@ package  controller;
 import javafx.animation.RotateTransition;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.geometry.Pos;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.Tooltip;
+import javafx.scene.effect.GaussianBlur;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
-import javafx.stage.Window;
+import javafx.stage.*;
 import javafx.util.Duration;
 import model.Card;
 import util.ClientConnection;
+
+import java.io.IOException;
+import java.util.Objects;
 import java.util.Stack;
 import com.google.gson.Gson;
 
@@ -64,6 +71,10 @@ public class BoardGameController {
     //Global Instances
     //ClientConnection client = ClientConnection.getInstance();
     PlayerSinglenton player = PlayerSinglenton.getInstance();
+
+    private StageOpponentController stageOpponentController;
+
+    private Stage stageOpponent;
 
 
 
@@ -181,12 +192,36 @@ public class BoardGameController {
     }
     //asignado al boton rival
     @FXML
-    void verRival(ActionEvent event){
+    public void verRival() throws IOException {
         /*System.out.println("Ejecutando");
         client.sendMessageToServer("user1:get_cards");
         String []aux = client.responseMessageToServer().split("\n");
         cardBoard[2][2].setExtension(aux[3]);
         initGridPane();*/
+
+        root.setEffect(new GaussianBlur(10.0));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/StageOpponent.fxml"));
+        AnchorPane ap = loader.load();
+        stageOpponentController = loader.getController();
+        Scene scene = new Scene(ap);
+        stageOpponent = new Stage();
+
+        stageOpponent.setTitle("Ventana Oponente");
+        stageOpponent.getIcons().add(new Image(Objects.requireNonNull(this.getClass().getResourceAsStream("/images/player.png"))));
+        stageOpponent.setScene(scene);
+        stageOpponent.initOwner(root.getScene().getWindow());
+        stageOpponent.initModality(Modality.WINDOW_MODAL);
+        stageOpponent.initStyle(StageStyle.DECORATED);
+        stageOpponent.setResizable(false);
+        stageOpponent.setOnCloseRequest((WindowEvent e) ->{
+
+            root.setEffect(null);
+        });
+        stageOpponent.setOnHidden((WindowEvent e)->{
+            root.setEffect(null);
+        });
+
+        stageOpponent.showAndWait();
     }
 
     public void deckCard() {

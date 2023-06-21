@@ -5,6 +5,38 @@
     -fx-background-size: stretch, auto;
 }
 
+.anchorOpponent{
+   -fx-background-image:url('../images/board.jpg');
+   -fx-background-size: stretch, auto;
+}
+
+.scroll{
+    -fx-background-color: TRANSPARENT;
+}
+
+.scroll-bar:horizontal, .scroll-bar:vertical{
+    -fx-background-color:transparent;
+}
+
+.increment-button, .decrement-button {
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+}
+
+.scroll-bar:horizontal .track,
+.scroll-bar:vertical .track{
+    -fx-background-color: TRANSPARENT;
+    -fx-border-color: gray;
+    -fx-background-radius: 0em;
+}
+
+.scroll-bar:horizontal .thumb,
+.scroll-bar:vertical .thumb {
+    -fx-background-color: gray;
+    -fx-background-radius: 5em;
+}
+
+
 .buttons{
      -fx-font-size: 12.0 pt;
      -fx-font-family: 'Josefin Sans', bold;
@@ -18,4 +50,12 @@
 .buttons:hover{
     -fx-background-color: linear-gradient(from 10% 10% to 100% 100%, #0cebeb, #20e3b2, #29ffc6);
     -fx-text-fill: #fff;
+}
+
+.labelOpponent{
+    -fx-font-size: 25.0 pt;
+    -fx-font-family: 'Josefin Sans', bold;
+    -fx-text-align:center;
+    /*-fx-text-fill: linear-gradient(from 10% 10% to 100% 100%, #4CB8C4, #3CD3AD);*/
+    -fx-text-fill: linear-gradient(from 10% 10% to 100% 100%, #0cebeb, #20e3b2, #29ffc6);
 }
