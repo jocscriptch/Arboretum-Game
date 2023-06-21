@@ -2,11 +2,15 @@ package controller;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.geometry.Pos;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.media.AudioClip;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
@@ -14,6 +18,9 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.Objects;
 import java.util.ResourceBundle;
+
+import javafx.util.Duration;
+import org.controlsfx.control.Notifications;
 import util.ClientConnection;
 
 public class CreateGameController implements Initializable {
@@ -134,6 +141,36 @@ public class CreateGameController implements Initializable {
         }
     }
 
+
+    public void successNotification(String message) {
+        String musicFile = "notify.mp3";
+        AudioClip mApplause = new AudioClip(Objects.requireNonNull(this.getClass().getResource("/sounds/notify.mp3")).toExternalForm());
+        mApplause.play();
+        javafx.scene.image.Image img = new javafx.scene.image.Image("/images/check.png");
+        Notifications notification = Notifications.create();
+        notification.graphic(new ImageView(img));
+        notification.title("Notificación");
+        notification.text(message);
+        notification.hideAfter(Duration.seconds(5));
+        notification.position(Pos.TOP_RIGHT);
+        notification.show();
+    }
+
+    public void errorNotification(String message) {
+
+        String musicFile = "error.mp3";
+        AudioClip mApplause = new AudioClip(Objects.requireNonNull(this.getClass().getResource("/sounds/error.mp3")).toExternalForm());
+        mApplause.play();
+        javafx.scene.image.Image img = new Image("/images/error.png");
+        Notifications notification = Notifications.create();
+        notification.graphic(new ImageView(img));
+        notification.title("Notificación");
+        notification.text(message);
+        notification.hideAfter(Duration.seconds(5));
+        notification.position(Pos.TOP_CENTER);
+        notification.show();
+
+    }
 
 }
 

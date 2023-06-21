@@ -2,14 +2,20 @@ package controller;
 
 import javafx.fxml.Initializable;
 import java.net.URL;
+import java.util.Objects;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
+import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.event.ActionEvent;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
+import javafx.scene.media.AudioClip;
+import javafx.util.Duration;
 import model.Card;
+import org.controlsfx.control.Notifications;
 import util.ClientConnection;
 
 
@@ -108,5 +114,36 @@ public class StageOpponentController implements Initializable {
     void ShowPlayer3(ActionEvent event) {
         ShowMace(btnPlay3.getText());
         fillMace();
+    }
+
+
+    public void successNotification(String message) {
+        String musicFile = "notify.mp3";
+        AudioClip mApplause = new AudioClip(Objects.requireNonNull(this.getClass().getResource("/sounds/notify.mp3")).toExternalForm());
+        mApplause.play();
+        javafx.scene.image.Image img = new javafx.scene.image.Image("/images/check.png");
+        Notifications notification = Notifications.create();
+        notification.graphic(new ImageView(img));
+        notification.title("Notificación");
+        notification.text(message);
+        notification.hideAfter(Duration.seconds(5));
+        notification.position(Pos.TOP_RIGHT);
+        notification.show();
+    }
+
+    public void errorNotification(String message) {
+
+        String musicFile = "error.mp3";
+        AudioClip mApplause = new AudioClip(Objects.requireNonNull(this.getClass().getResource("/sounds/error.mp3")).toExternalForm());
+        mApplause.play();
+        javafx.scene.image.Image img = new Image("/images/error.png");
+        Notifications notification = Notifications.create();
+        notification.graphic(new ImageView(img));
+        notification.title("Notificación");
+        notification.text(message);
+        notification.hideAfter(Duration.seconds(5));
+        notification.position(Pos.TOP_CENTER);
+        notification.show();
+
     }
 }
