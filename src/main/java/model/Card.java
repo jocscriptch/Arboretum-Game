@@ -15,6 +15,7 @@ public class Card {
         this.placed = false;
     }
 
+
     public String obtenerNombre() {
         return name;
     }

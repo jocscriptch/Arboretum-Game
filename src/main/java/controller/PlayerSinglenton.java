@@ -7,9 +7,9 @@ import java.util.ArrayList;
 public class PlayerSinglenton {
     private static PlayerSinglenton instance = null;
 
-    ArrayList <Card> cards = new ArrayList<Card>();
+    private ArrayList <Card> cards = new ArrayList();
 
-    ArrayList <Card> mazoDescarte = new ArrayList<Card>();
+    private ArrayList <Card> mazoDescarte = new ArrayList();
 
     private String name;
 
@@ -24,6 +24,7 @@ public class PlayerSinglenton {
     }
 
     public String getName() {
+
         return name;
     }
 
@@ -31,11 +32,11 @@ public class PlayerSinglenton {
         this.name = name;
     }
 
-    public ArrayList getCards(){
+    public ArrayList<Card> getCards(){
         return cards;
     }
 
-    public ArrayList getMazoDescarte(){
+    public ArrayList<Card> getMazoDescarte(){
         return mazoDescarte;
     }
 

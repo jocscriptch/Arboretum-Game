@@ -42,7 +42,7 @@ public class CreateGameController implements Initializable {
     private double x = 0;
     private double y = 0;
 
-    ClientConnection client = ClientConnection.getInstance();
+    //ClientConnection client = ClientConnection.getInstance();
 
 
 
@@ -101,14 +101,14 @@ public class CreateGameController implements Initializable {
     void CreateNewPlayer() throws IOException {
         try {
             String namePlayer = textNamePlayer.getText();
-            //PlayerSinglenton.getInstance().setName(namePlayer);
+            PlayerSinglenton.getInstance().setName(namePlayer);
             PlayerSinglenton playerName = PlayerSinglenton.getInstance();
             playerName.setName(namePlayer);
             System.out.println("Ejecutando");
             System.out.println(textNamePlayer.getText());
             //ClientConnection client = ClientConnection.getInstance();
-            client.sendMessageToServer(textNamePlayer.getText()+":Nothing");
-            System.out.println(client.responseMessageToServer());
+            //client.sendMessageToServer(textNamePlayer.getText()+":Nothing");
+            //System.out.println(client.responseMessageToServer());
             // codigo server
             /*try {
                 System.out.println(client.responseMessageToServer());
