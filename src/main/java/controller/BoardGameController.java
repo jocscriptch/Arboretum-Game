@@ -3,6 +3,7 @@ import javafx.animation.RotateTransition;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.Tooltip;
 import javafx.scene.image.Image;
@@ -12,7 +13,6 @@ import javafx.stage.Window;
 import javafx.util.Duration;
 import model.Card;
 import util.ClientConnection;
-
 import java.util.Stack;
 
 public class BoardGameController {
@@ -61,7 +61,7 @@ public class BoardGameController {
     private ImageView imgV7;
 
     @FXML
-    private Button maceBtn;
+    private Label labelPlayer;
 
 
     private Card[][] cardBoard = new Card[7][7];
@@ -73,7 +73,10 @@ public class BoardGameController {
     Stack<Integer> rows = new Stack();
     Stack<Integer> colums = new Stack();
 
+    //Global Instances
     ClientConnection client = ClientConnection.getInstance();
+    PlayerSinglenton namePlayer = PlayerSinglenton.getInstance();
+
 
 
     public void initialize() {
@@ -91,6 +94,7 @@ public class BoardGameController {
         deckCard();
         flowpane.getChildren().clear();
         Mace();
+        labelPlayer.setText(namePlayer.getName());
 
 
     }
@@ -204,7 +208,8 @@ public class BoardGameController {
     }
 
     public void Mace(){
-        client.sendMessageToServer("user3:get_cards");
+        System.out.println(namePlayer.getName());
+        client.sendMessageToServer(namePlayer.getName()+":get_cards");
         String response = client.responseMessageToServer();
         String []aux = response.split("\n");
         ImageView[] imageViews = {imgV1,imgV2,imgV3,imgV4,imgV5,imgV6,imgV7};
