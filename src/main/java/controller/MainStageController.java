@@ -117,7 +117,6 @@ public class MainStageController implements Initializable {
 
         if (event.getSource() == btnRules) {
 
-            errorNotification("¡Hola xD!");
             mainStage.setVisible(false);
             aboutStage.setVisible(false);
             rulesStage.setVisible(true);

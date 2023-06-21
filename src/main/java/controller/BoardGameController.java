@@ -337,10 +337,11 @@ public class BoardGameController {
     }*/
     @FXML
     void StealOneCardMace(ActionEvent event){
-        if ((row == -1 && colum == -1) && ( rowMace == -1 && columMace == -1)){
-            System.out.println("No ha hecho movs");
+        if ((row == -1 && colum == -1) || ( rowMace == -1 && columMace == -1)){
+            errorNotification("No ha hecho ningun movimiento, es necesario para robar");
         }else{
-            System.out.println("Entrando a robar");
+            System.out.println(row+" "+colum+" "+rowMace+" "+columMace);
+            successNotification("Entrando a robar","/images/espiar.png");
             client.sendMessageToServer(player.getName()+":stealCardMace");
             String response = client.responseMessageToServer();
             System.out.println(response);
@@ -352,11 +353,11 @@ public class BoardGameController {
 
     }
 
-    public void successNotification(String message) {
+    public void successNotification(String message,String pathImage) {
         String musicFile = "notify.mp3";
         AudioClip mApplause = new AudioClip(Objects.requireNonNull(this.getClass().getResource("/sounds/notify.mp3")).toExternalForm());
         mApplause.play();
-        javafx.scene.image.Image img = new javafx.scene.image.Image("/images/check.png");
+        javafx.scene.image.Image img = new javafx.scene.image.Image(pathImage);
         Notifications notification = Notifications.create();
         notification.graphic(new ImageView(img));
         notification.title("Notificación");
